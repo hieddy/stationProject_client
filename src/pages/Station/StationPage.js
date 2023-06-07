@@ -116,8 +116,8 @@ const SelectedFilter = ({ filterObj, setFilterObj, parentFunction }) => {
       e.preventDefault();
       // console.log("-----", queryData);
       try {
-        const result = await axios.get(
-          `/api/stations?parkingFee=${queryData["parkingFee"]}`
+        const result = await API.get(
+          `http://${process.env.REACT_APP_BACKEND_URL}/api/stations?parkingFee=${queryData["parkingFee"]}`
         );
         setData(result.data);
       } catch (err) {

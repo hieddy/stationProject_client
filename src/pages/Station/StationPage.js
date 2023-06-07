@@ -15,6 +15,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
 import * as styles from "@mui/material/styles";
+import axios from "axios";
 
 import API from "API";
 
@@ -115,8 +116,8 @@ const SelectedFilter = ({ filterObj, setFilterObj, parentFunction }) => {
       e.preventDefault();
       // console.log("-----", queryData);
       try {
-        const result = await API.get(
-          `http://${process.env.REACT_APP_BACKEND_URL}/api/stations?parkingFee=${queryData["parkingFee"]}`
+        const result = await axios.get(
+          `/api/stations?parkingFee=${queryData["parkingFee"]}`
         );
         setData(result.data);
       } catch (err) {
